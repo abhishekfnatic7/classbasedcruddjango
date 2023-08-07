@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .cardhover:hover {
+        border: 1px solid rgb(57, 57, 91);
+        border-radius: 8px 8px;
+       
+    }
+</style>
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-{{ message.tags }} alert-dismissible fade show" role="alert"">
+             {{ message|safe }}
+             <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+<div class="container pt-5">
+    <div class="row justify-content-center">
+
+        {% for x in cat %}
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="col-sm-6 col-md-4 cardhover mx-auto pt-2">
+            <div class="card border border-0">
+                <img src="{{x.simage.url}}" class="card-img-top mx-auto"
+                    style="border-radius: 50%;width: 100px;height: 100px;" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Name:{{x.sname}}</h5>
+                    <p class="card-text">Age:{{x.sage}}</p>
+                    <p class="card-text">Email:{{x.semail}}</p>
+                    <p class="card-text">Phone:{{x.sphone}}</p>
+                    <p class="card-text">
+                    <Address>Address:{{x.saddress}} </Address>
+                    </p>
+                    <a href="{{x.get_absolute_url}}" class="btn btn-primary">Edit</a>
+                    <a href="{{x.delete_url}}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-sm-6 col-md-4  cardhover text-center pt-2">
+            <div class="card border border-0">
+                <img src="{{x.simage.url}}" class="card-img-top mx-auto"
+                    style="border-radius: 50%;width: 100px;height: 100px;" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Name:{{x.sname}}</h5>
+                    <p class="card-text">Age:{{x.sage}}</p>
+                    <p class="card-text">Email:{{x.semail}}</p>
+                    <p class="card-text">Phone:{{x.sphone}}</p>
+                    <p class="card-text">
+                    <Address>Address:{{x.saddress}} </Address>
+                    </p>
+                    <a href="{{x.get_absolute_url}}" class="btn btn-primary">Edit</a>
+                    <a href="{{x.delete_url}}" class="btn btn-primary">Delete</a>
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+{% endblock %}

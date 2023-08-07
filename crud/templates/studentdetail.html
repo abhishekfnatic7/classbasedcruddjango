@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container pt-4"  enctype="multipart/form-data" novalidate>
+   <form  method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <input type="submit" class="btn btn-danger" value="submit">
+   </form>
+</div>
+
+
+
+{% endblock %}
